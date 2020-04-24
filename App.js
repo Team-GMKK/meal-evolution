@@ -24,6 +24,14 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import RestaurantPage from './Components/RestaurantInfoPage/RestaurantInfoPage';
+
+const Test = () => (
+  <View style={{flex: 1}}>
+    <RestaurantPage />
+  </View>
+);
+
 const App: () => React$Node = () => {
   return (
     <>
@@ -111,4 +119,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default Test;
