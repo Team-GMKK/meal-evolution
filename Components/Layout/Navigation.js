@@ -1,30 +1,36 @@
 import * as React from 'react';
 import {BottomNavigation, Text} from 'react-native-paper';
+import StartBrowsePage from '../StartBrowsePage/StartBrowsePage';
 import RestaurantsPage from '../RestaurantInfoPage/RestaurantInfoPage';
 
-const RestaurantsInfoRoute = () => <RestaurantsPage />;
+const RestaurantsInfoRoute = () => <StartBrowsePage />;
 
 const SearchRoute = () => <Text>Search</Text>;
 
 const OwnerRoute = () => <Text>Owner</Text>;
 
 export default class MyComponent extends React.Component {
-  state = {
-    index: 0,
-    routes: [
-      {key: 'browse', title: 'Browse', icon: 'queue-music'},
-      {key: 'search', title: 'Search', icon: 'album'},
-      {key: 'owner', title: 'Owner', icon: 'history'},
-    ],
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      index: 0,
+      routes: [
+        {key: 'browse', title: 'Browse', icon: 'queue-music'},
+        {key: 'search', title: 'Search', icon: 'album'},
+        {key: 'owner', title: 'Owner', icon: 'history'},
+      ],
+    };
+    this._renderScene = BottomNavigation.SceneMap({
+      browse: RestaurantsInfoRoute,
+      search: SearchRoute,
+      owner: OwnerRoute,
+    });
+    this._handleIndexChange = this._handleIndexChange.bind(this);
+  }
 
-  _handleIndexChange = index => this.setState({index});
-
-  _renderScene = BottomNavigation.SceneMap({
-    browse: RestaurantsInfoRoute,
-    search: SearchRoute,
-    owner: OwnerRoute,
-  });
+  _handleIndexChange(index) {
+    this.setState({index});
+  }
 
   render() {
     return (
@@ -32,6 +38,8 @@ export default class MyComponent extends React.Component {
         navigationState={this.state}
         onIndexChange={this._handleIndexChange}
         renderScene={this._renderScene}
+        shifting
+        sceneAnimationEnabled
       />
     );
   }

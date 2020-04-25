@@ -1,7 +1,16 @@
 import React, {Component} from 'react';
-import {View} from 'react-native';
+import {View, StyleSheet} from 'react-native';
 import {Headline, Paragraph} from 'react-native-paper';
 import {SliderBox} from 'react-native-image-slider-box';
+
+const style = StyleSheet.create({
+  caption: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 100,
+    backgroundColor: '#e1e1e1',
+  },
+});
 
 export default class PicGallery extends Component {
   constructor(props) {
@@ -50,7 +59,7 @@ export default class PicGallery extends Component {
           currentImageEmitter={index => this.onPicSwipe(index)}
           inactiveDotColor="#777"
         />
-        <View style={{justifyContent: 'center', alignItems: 'center', height: 100, backgroundColor: '#e1e1e1'}}>
+        <View style={style.caption}>
           <Headline>{imageDescriptions[currentPicIndex].title}</Headline>
           <Paragraph>
             {imageDescriptions[currentPicIndex].description}
@@ -59,4 +68,4 @@ export default class PicGallery extends Component {
       </View>
     );
   }
-};
+}

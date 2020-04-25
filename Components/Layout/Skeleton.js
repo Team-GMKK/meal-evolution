@@ -1,6 +1,5 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
-import {Appbar} from 'react-native-paper';
 import BottomNav from './Navigation';
 
 const style = StyleSheet.create({
