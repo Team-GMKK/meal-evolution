@@ -1,15 +1,12 @@
 import React from 'react';
-import {Avatar, Button, Card, Title, Paragraph} from 'react-native-paper';
+import {List} from 'react-native-paper';
 
-const MenuScroll = () => {
-  return (
-    <Card>
-      <Card.Title title="Carne Asada Fries" />
-      <Card.Content>
-        <Paragraph>I want this shit so bad</Paragraph>
-      </Card.Content>
-    </Card>
-  );
-};
+const MenuScroll = ({item}) => (
+  <List.Accordion
+    title={`Food Option ${item}`}
+    left={props => <List.Icon {...props} icon="folder" />}>
+    <MenuScroll />
+  </List.Accordion>
+);
 
 export default MenuScroll;

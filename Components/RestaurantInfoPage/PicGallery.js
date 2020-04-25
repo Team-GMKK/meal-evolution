@@ -8,27 +8,53 @@ export default class PicGallery extends Component {
     super(props);
     this.state = {
       images: [
-        "https://source.unsplash.com/1024x768/?taco",
-        "https://source.unsplash.com/1024x768/?water",
-        "https://source.unsplash.com/1024x768/?girl",
-        "https://source.unsplash.com/1024x768/?tree", // Network image
+        'https://source.unsplash.com/1024x768/?taco',
+        'https://source.unsplash.com/1024x768/?water',
+        'https://source.unsplash.com/1024x768/?girl',
+        'https://source.unsplash.com/1024x768/?tree',
       ],
+      imageDescriptions: [
+        {
+          title: 'carne asada fries',
+          description: 'i really want carne asada fries',
+        },
+        {
+          title: 'tacos',
+          description: 'hell yeah i want this',
+        },
+        {
+          title: 'burrito',
+          description: 'mmmm i want this',
+        },
+        {
+          title: 'horchata',
+          description: 'oh hell yes',
+        },
+      ],
+      currentPicIndex: 0,
     };
+    this.onPicSwipe = this.onPicSwipe.bind(this);
   }
   // other component code ...
+  onPicSwipe(index) {
+    this.setState({currentPicIndex: index});
+  }
+
   render() {
-    const {images} = this.state;
+    const {images, imageDescriptions, currentPicIndex} = this.state;
     return (
       <View>
         <SliderBox
           images={images}
           sliderBoxHeight={300}
-          onCurrentImagePressed={index => console.warn(`image ${index} pressed`)}
+          currentImageEmitter={index => this.onPicSwipe(index)}
           inactiveDotColor="#777"
         />
-        <View>
-          <Headline>Hello</Headline>
-          <Paragraph>This is the description of the picture</Paragraph>
+        <View style={{justifyContent: 'center', alignItems: 'center', height: 100, backgroundColor: '#e1e1e1'}}>
+          <Headline>{imageDescriptions[currentPicIndex].title}</Headline>
+          <Paragraph>
+            {imageDescriptions[currentPicIndex].description}
+          </Paragraph>
         </View>
       </View>
     );
