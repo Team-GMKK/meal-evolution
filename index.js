@@ -8,6 +8,8 @@ import {DefaultTheme, Provider as PaperProvider} from 'react-native-paper';
 import {NavigationContainer} from '@react-navigation/native';
 import App from './App';
 import {name as appName} from './app.json';
+import OwnerMenuView from './Components/OwnerMenuView/OwnerMenuView.js';
+import 'react-native-gesture-handler';
 
 const theme = {
   ...DefaultTheme,
