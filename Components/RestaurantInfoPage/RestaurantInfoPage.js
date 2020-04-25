@@ -1,9 +1,8 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
-import {Headline, Text, Appbar, withTheme} from 'react-native-paper';
+import {Appbar, withTheme} from 'react-native-paper';
 import PicGallery from './PicGallery';
 import MenuScroll from './MenuScrollContainer';
-import Layout from '../Layout/Skeleton';
 
 const style = StyleSheet.create({
   wrapper: {
@@ -13,12 +12,14 @@ const style = StyleSheet.create({
     height: 30,
     backgroundColor: theme.colors.primary,
   }),
-
 });
 
 const RestaurantPage = ({theme}) => {
   return (
     <View style={style.wrapper}>
+      <Appbar.Header>
+        <Appbar.Content title="Eat Ladle" />
+      </Appbar.Header>
       <PicGallery />
       <MenuScroll />
     </View>
