@@ -3,6 +3,7 @@ import {View, StyleSheet} from 'react-native';
 import {Headline, Text, Appbar, withTheme} from 'react-native-paper';
 import PicGallery from './PicGallery';
 import MenuScroll from './MenuScrollContainer';
+import Layout from '../Layout/Skeleton';
 
 const style = StyleSheet.create({
   wrapper: {
@@ -18,13 +19,6 @@ const style = StyleSheet.create({
 const RestaurantPage = ({theme}) => {
   return (
     <View style={style.wrapper}>
-      <View style={style.topAppBar(theme)} />
-      <Appbar>
-        <Appbar.Action
-          icon="arrow-left"
-          onPress={() => console.log('Pressed archive')}
-        />
-      </Appbar>
       <PicGallery />
       <MenuScroll />
     </View>
